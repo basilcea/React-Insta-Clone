@@ -1,19 +1,28 @@
-import React from 'react';
-import './post.css';
-import { farHeart } from "@fortawesome/free-regular-svg-icons";
-import { farComment } from "@fortawesome/free-regular-svg-icons";
+import React from "react";
+import "./post.css";
+import Comments from "../CommentSection/commentSection";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Post = (props) => {
-    return (
-        <div>
-         <img src={props.url} alt={''}/>
-        <div>
-        <FontAwesomeIcon icon={farHeart} />
-        <FontAwesomeIcon icon={farComment} />
-        </div>
-         <p>{props.likes}  likes</p>
-        </div>
-    )
-}
-export default Post
+const Post = ({post}) => {
+  return (
+    <div>
+    <div>
+    <img src={post.thumbnailUrl} alt='' />
+    </div>
+    <div>
+    <img src={post.imageUrl} alt='' />
+    </div>
+     
+      <div>
+        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faComment} />
+      </div>
+      <p>{post.likes} likes</p>
+      <Comments comments={post.comments} />
+   
+    </div>
+  );
+};
+export default Post;

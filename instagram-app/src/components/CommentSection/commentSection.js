@@ -1,13 +1,15 @@
-import React from 'react';
-import Comment from './comment';
-import './commentSection.css';
+import React from "react";
+import Comment from "./comment";
+import "./commentSection.css";
 
-const CommentSection = (props) =>{
-return (
+const CommentSection = ({comments}) => {
+  return (
     <div>
-        {props.comments.map(comment => <Comment  props={comment} />)}
-    </div>
-)
 
-}
-export default CommentSection
+      {comments.map(comment => 
+        <Comment key={comment.id} comment={comment} />
+      )}
+    </div>
+  );
+};
+export default CommentSection;
