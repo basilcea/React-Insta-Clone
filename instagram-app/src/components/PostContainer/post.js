@@ -2,8 +2,6 @@ import React from "react";
 import "./post.css";
 import PropTypes from 'prop-types';
 import Comments from "../CommentSection/commentSection";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Post = ({post}) => {
@@ -17,8 +15,8 @@ const Post = ({post}) => {
     </div>
      
       <div>
-        <FontAwesomeIcon icon={faHeart} />
-        <FontAwesomeIcon icon={faComment} />
+        <FontAwesomeIcon icon={['far','heart']}/>
+        <FontAwesomeIcon icon={['far','comment']} transform='rotate-270' />
       </div>
       <p>{post.likes} likes</p>
       <Comments comments={post.comments} />
@@ -30,8 +28,8 @@ Post.propTypes= {
     post: PropTypes.shape({
         thumbnailUrl:PropTypes.string,
         imageUrl:PropTypes.string.isRequired,
-        faHeart:PropTypes.instanceOf(FontAwesomeIcon).isRequired,
-        faComment:PropTypes.instanceOf(FontAwesomeIcon).isRequired,
+        faHeart:PropTypes.instanceOf(FontAwesomeIcon),
+        faComment:PropTypes.instanceOf(FontAwesomeIcon),
         likes:PropTypes.number.isRequired,
         comments:PropTypes.array
 
