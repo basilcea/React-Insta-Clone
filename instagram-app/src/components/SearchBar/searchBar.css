@@ -26,6 +26,11 @@
     margin-right:5%;
     margin-left:5%;
 }
+@media (min-width:500px){
+    .logo-icon{
+        font-size:2.5rem;
+    }
+}
 @media (min-width:800px){
     .logo-icon{
         font-size:3rem;
@@ -50,7 +55,7 @@
 .search-form{
     display:none;
     border:1px solid grey;
-    width:80%;
+    width:40%;
     margin:2% 5%;
     margin-left:10%;
     background-color: gainsboro;
@@ -58,10 +63,9 @@
     justify-content:space-between;
     align-items:center;
 }
-@media (min-width:800px){
+@media (min-width:500px){
     .search-form{
         display:flex;
-        width:40%;
     }
 }
 input[type='search']{
@@ -72,12 +76,24 @@ input[type='search']{
     padding:1%;
     width:60%;
 }
+
 .search-icon{
     font-size:1em;
     color:grey;
     display:flex;
     text-align:center;
     margin-left:30%;
+}
+@media (min-width:500px){
+    .search-icon{
+        display:flex;
+        width:20%;
+        margin-left:5%
+    }
+    input[type='search']{
+        width:80%;
+        font-size:1em;
+    }
 }
 .socials{
     display:flex;

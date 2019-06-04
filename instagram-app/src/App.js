@@ -18,10 +18,12 @@ class App extends Component{
     return(
       <div className ='App-container'>
         <SearchBar />
+        <div className='App-section'>
         <div className='App-block'></div>
         {
           dummyData.map(data => <Post key={data.id}  post={data}/>)
         }
+        </div>
       </div>
     )
   }

@@ -3,13 +3,37 @@
   width: 100%; 
   background-color:#fafafa;
 }
+.App-section{
+ width:80%;
+ margin:0 10%;
+}
+@media(min-width:1000px){
+  .App-section{
+    width:40%;
+  }
+}
+
+
+@media (max-width:500px){
+    .App-section{
+      width:100%;
+      margin:0;
+    }
+}
 .App-block{
   min-height:100px;
   width:100%;
+  margin:10% 0%;
   border: 1px solid grey;
 
 }
-@media (min-width:800px){
+@media (min-width:500px){
+  .App-block{
+    min-height:150px;
+  }
+}
+
+@media (min-width:1000px){
   .App-block{
     display:none;
   }

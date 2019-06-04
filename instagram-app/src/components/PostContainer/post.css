@@ -1,5 +1,14 @@
 .post-card{
     width:100%;
+  
+}
+@media (min-width:500px){
+    .post-card{
+        margin:5% 0%;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        border:1px solid silver;
+        border-radius: 5px
+    }
 }
 .post-owner-info{
     display:flex;
@@ -29,6 +38,7 @@
 }
 .post-image img{
     width:100%;
+    
 }
 .post-actions{
     display:flex;
