@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Comments from "../CommentSection/commentSection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Post = ({ post }) => {
+const Post = ({ post, clickPost ,newComment , newInput  ,id}) => {
   return (
     <div className='post-card'>
       <div className ='post-owner-info'>
@@ -30,6 +30,12 @@ const Post = ({ post }) => {
         </div>
       </div>
       <Comments comments={post.comments} />
+      <div>
+      <form className='add-comment-form'  onSubmit={e => clickPost(e, id)}>
+      <input type='text' value={newComment} onChange={newInput} placeholder='Add Comment...'/>
+      <input type='submit' value='Post' />
+      </form>
+      </div>
     </div>
   );
 };
