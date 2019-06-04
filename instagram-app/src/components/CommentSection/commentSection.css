@@ -1,0 +1,12 @@
+.comments{
+    padding:2%;
+    line-height: 17px;
+}
+.comment {
+    padding:0;
+    margin:0;
+}
+
+.comment-username{
+    font-weight:bold;
+}

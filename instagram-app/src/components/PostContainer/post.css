@@ -1,0 +1,66 @@
+.post-card{
+    width:100%;
+}
+.post-owner-info{
+    display:flex;
+    justify-content: space-between;
+    width:90%;
+    align-items:center;
+    margin:0% 5%;
+
+}
+.post-owner-info img{
+    border-radius: 50%;
+    width: 40px;
+    height:40px;
+}
+.post-creator{
+    width:60%;
+    padding-top:2%;
+    font-weight:bold;
+    font-size:2.5vw;
+}
+.post-dropdown{
+    color:black;
+    font-size:2rem;
+}
+.post-image{
+    width:100%;
+}
+.post-image img{
+    width:100%;
+}
+.post-actions{
+    display:flex;
+    margin-top:3%;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.post-comment-action{
+    width:30%;
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.post-comment-action p{
+    padding-top:5%;
+    padding-left:6%;
+    font-weight: bold;
+}
+.post-icon-action{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding-left:6%;
+    font-size:1.5rem;
+
+}
+.post-bookmark{
+    width: 50%;
+    margin-right:5%;
+}
+.post-bookmark {
+   display:flex;
+   justify-content: flex-end;
+   font-size:1.5rem;
+}

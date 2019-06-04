@@ -5,7 +5,7 @@ import "./commentSection.css";
 
 const CommentSection = ({comments}) => {
   return (
-    <div>
+    <div className='comments'>
       {comments.map(comment => 
         <Comment key={comment.id} comment={comment} />
       )}
