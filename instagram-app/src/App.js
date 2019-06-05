@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Postpage from './components/PostContainer/postPage';
+import Loginpage from './components/Login/login';
 import withAuthenticate  from './components/authentication/authenticate';
 import './App.css';
 import dummyData from './dummy-data' ;
@@ -11,8 +12,7 @@ import {faSearch,faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 library.add(
     faHeart,faComment,faCompass,faUser,faInstagram, faSearch, faBookmark ,faExternalLinkAlt
 ) 
-const ComponentFromWithAuthenticate = withAuthenticate(Postpage);
-
+const ComponentFromWithAuthenticate = withAuthenticate(Postpage)(Loginpage);
 class App extends Component{
   constructor(props){
     super(props);
