@@ -21,31 +21,56 @@ class App extends Component{
   }
 
 componentDidMount(){
-  this.setState({
-    posts:dummyData
-  })
-}
-
-updatePost= id =>{
- //const newPostsArray = Object.assign([],this.state.posts)
- const newPostsArray = this.state.posts
-
+  const data = localStorage.getItem('posts');
+    const posts = JSON.parse(data);
+    this.setState({
+      posts: posts || dummyData
+    });
+  }
  
+updatePost= (id  , comments )=>{
+ const newPostsArray = Object.assign([],this.state.posts)
+ const updatedPosts= newPostsArray.map(post => {
+  if (post.id === id) {
+    post.comments = comments;
+    return post;
+  }
+  return post;
+ })
+ this.setState({
+  posts: updatedPosts
+ })
+ localStorage.clear();
+ localStorage.setItem('posts',JSON.stringify(updatedPosts))
+}
+filter =(e) => {
+  const data = localStorage.getItem('posts');
+  const posts = JSON.parse(data);
+  const results = posts.filter(
+    post =>  post.username.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+  
 
- const selectedPost = newPostsArray.filter(post => post.id === id)
- console.log(selectedPost , id, newPostsArray )
-
+    if(e.target.value ==='' || results.length === 0){
+      this.setState({
+        posts:posts
+      })
+    }
+    else{
+      this.setState({
+        posts: results
+      })
+    }
 
 }
   render(){
-    console.log(this.state.posts)
     return(
       <div className ='App-container'>
-        <SearchBar />
+        <SearchBar  searchHandler={this.filter}/>
         <div className='App-section'>
         <div className='App-block'></div>
         {
-          dummyData.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost}/>)
+          this.state.posts.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost} />)
         }
         </div>
       </div>

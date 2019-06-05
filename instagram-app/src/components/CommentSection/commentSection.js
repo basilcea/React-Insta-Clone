@@ -14,11 +14,8 @@ class CommentSection extends Component {
       currentUser:'Basil',
       id:this.props.id,
       likes:this.props.likes,
-      clicked:[]
+      clicked:[],
     })
-  }
-  componentDidMount(){
-    this.props.updatecomments(this.state.id)
   }
   onLikeHandler = e => {
     e.preventDefault();
@@ -60,7 +57,7 @@ addNewComment = (e) => {
     comments:newComments,
     comment:'',
   })
-
+  this.props.updatecomments(this.state.id , newComments)
 }
 render(){
   return(

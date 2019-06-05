@@ -3,7 +3,7 @@ import "./searchBar.css";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SearchBar = searchHandler => {
+const SearchBar = ({searchHandler}) => {
   return (
     <div className ='searchBar'>
       <div className = 'logo'>
@@ -15,7 +15,7 @@ const SearchBar = searchHandler => {
         <input
           className="searchBox"
           type="search"
-          onChange={() => searchHandler}
+          onChange={(e) => searchHandler(e)}
           placeholder={"Search"}
         />
       </form>
