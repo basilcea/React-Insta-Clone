@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Comments from "../CommentSection/commentSection";
 
 
-const Post = ({ post, update}) => {
+const Post = ({ post, update }) => {
   return (
     <div className='post-card'>
       <div className ='post-owner-info'>

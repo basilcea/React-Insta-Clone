@@ -17,6 +17,8 @@ class App extends Component{
     super(props);
     this.state={
       posts:[],
+      filtered:false,
+      length:''
     }
   }
 
@@ -49,26 +51,37 @@ filter =(e) => {
   const results = posts.filter(
     post =>  post.username.toLowerCase().includes(e.target.value.toLowerCase())
     )
-  
-
-    if(e.target.value ==='' || results.length === 0){
+    if(e.target.value ===''){
       this.setState({
-        posts:posts
+        posts:posts,
+        filtered:false
+      })
+    }
+    else if(results.length === 0){
+      this.setState({
+        posts:posts,
+        filtered:true,
+        length:'No Result Found'
       })
     }
     else{
       this.setState({
-        posts: results
+        posts: results,
+        filtered:true,
+        length:`Result Found: ${results.length}`,
       })
     }
-
 }
   render(){
+    const style = {
+      display: this.state.filtered? 'block': 'none'
+    }
     return(
       <div className ='App-container'>
         <SearchBar  searchHandler={this.filter}/>
         <div className='App-section'>
         <div className='App-block'></div>
+        <div style={style}><p>{this.state.length}</p></div>
         {
           this.state.posts.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost} />)
         }
