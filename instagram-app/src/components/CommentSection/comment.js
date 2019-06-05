@@ -5,13 +5,13 @@ import './commentSection.css';
 const Comment = ({comment})  => {
     return (
     <div className='comment'> 
-        <p><span>{comment.username}</span> {comment.text}</p>
+        <p><span className='comment-username'>{comment.username}</span> {comment.text}</p>
     </div>
     )
 }
 Comment.propTypes = {
     comment: PropTypes.shape({
-        id:PropTypes.number.isRequired,
+        id:PropTypes.string.isRequired,
         username:PropTypes.string.isRequired,
         text:PropTypes.string.isRequired
     })
