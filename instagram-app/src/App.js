@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Post from './components/PostContainer/post';
-import SearchBar from './components/SearchBar/searchBar';
+import Postpage from './components/PostContainer/postPage';
 import './App.css';
 import dummyData from './dummy-data' ;
 import {library} from '@fortawesome/fontawesome-svg-core'
@@ -73,19 +72,9 @@ filter =(e) => {
     }
 }
   render(){
-    const style = {
-      display: this.state.filtered? 'block': 'none'
-    }
     return(
       <div className ='App-container'>
-        <SearchBar  searchHandler={this.filter}/>
-        <div className='App-section'>
-        <div className='App-block'></div>
-        <div style={style}><p>{this.state.length}</p></div>
-        {
-          this.state.posts.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost} />)
-        }
-        </div>
+        <Postpage  state={this.state} filter ={this.filter}  updating={this.updatedPosts}/>
       </div>
     )
   }
