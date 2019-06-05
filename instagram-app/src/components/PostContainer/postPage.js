@@ -4,7 +4,6 @@ import Post from "./post";
 import SearchBar from "../SearchBar/searchBar";
 
 const postPage = ({state, filter ,updating}) => {
-    console.log(state)
   const style = {
     display: state.filtered ? "block" : "none"
   };

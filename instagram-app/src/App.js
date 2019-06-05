@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Postpage from './components/PostContainer/postPage';
+import withAuthenticate  from './components/authentication/authenticate';
 import './App.css';
 import dummyData from './dummy-data' ;
 import {library} from '@fortawesome/fontawesome-svg-core'
@@ -10,6 +11,7 @@ import {faSearch,faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 library.add(
     faHeart,faComment,faCompass,faUser,faInstagram, faSearch, faBookmark ,faExternalLinkAlt
 ) 
+const ComponentFromWithAuthenticate = withAuthenticate(Postpage);
 
 class App extends Component{
   constructor(props){
@@ -74,11 +76,13 @@ filter =(e) => {
   render(){
     return(
       <div className ='App-container'>
-        <Postpage  state={this.state} filter ={this.filter}  updating={this.updatedPosts}/>
+       {/* HOC */}
+      <ComponentFromWithAuthenticate  state={this.state} filter ={this.filter}  updating={this.updatedPosts}/>
       </div>
     )
   }
 
 }
+
 
 export default App;
