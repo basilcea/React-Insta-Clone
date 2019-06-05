@@ -6,52 +6,46 @@ import dummyData from './dummy-data' ;
 import {library} from '@fortawesome/fontawesome-svg-core'
 import { faHeart , faComment, faCompass , faUser, faBookmark} from "@fortawesome/free-regular-svg-icons";
 import {faInstagram} from '@fortawesome/free-brands-svg-icons';
-import {faSearch,faExternalLinkAlt, faUserInjured} from '@fortawesome/free-solid-svg-icons';
-import uuid from 'uuid';
+import {faSearch,faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faHeart,faComment,faCompass,faUser,faInstagram, faSearch, faBookmark ,faExternalLinkAlt
 ) 
 
 class App extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
-      posts:dummyData,
-      post:'',
-      comment:'',
+      posts:[],
     }
   }
-  onChangeHandler = e =>{
-    this.setState({
-      comment: e.target.value,
+
+componentDidMount(){
+  this.setState({
+    posts:dummyData
   })
 }
 
-  onClickHandler = (e, id) => {
-    e.preventDefault();
-    const newPosts = Object.assign([], this.state.posts)
-    const selectedPost = newPosts.find(post => post.id === id);
-    console.log(selectedPost.comments)
-    selectedPost.comments.push({
-      id:uuid(),
-      text:this.state.comment,
-      username:'newUser'
-    })
-    this.setState({
-      posts:newPosts,
-      comment:'',
-    })
+updatePost= id =>{
+ //const newPostsArray = Object.assign([],this.state.posts)
+ const newPostsArray = this.state.posts
 
-  }
+ 
+
+ const selectedPost = newPostsArray.filter(post => post.id === id)
+ console.log(selectedPost , id, newPostsArray )
+
+
+}
   render(){
+    console.log(this.state.posts)
     return(
       <div className ='App-container'>
         <SearchBar />
         <div className='App-section'>
         <div className='App-block'></div>
         {
-          dummyData.map(data => <Post key={data.id} id={data.id}  post={data} clickPost={this.onClickHandler} newInput={this.onChangeHandler} newComment={this.state.comment}/>)
+          dummyData.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost}/>)
         }
         </div>
       </div>

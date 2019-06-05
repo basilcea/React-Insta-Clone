@@ -2,9 +2,9 @@ import React from "react";
 import "./post.css";
 import PropTypes from "prop-types";
 import Comments from "../CommentSection/commentSection";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Post = ({ post, clickPost ,newComment , newInput  ,id}) => {
+
+const Post = ({ post, update}) => {
   return (
     <div className='post-card'>
       <div className ='post-owner-info'>
@@ -15,27 +15,7 @@ const Post = ({ post, clickPost ,newComment , newInput  ,id}) => {
       <div className='post-image'>
         <img src={post.imageUrl} alt="" />
       </div>
-
-      <div className ='post-actions'>
-        <div className ='post-comment-action'>
-        <div className='post-icon-action'>
-        <FontAwesomeIcon icon={["far", "heart"]} />
-        <FontAwesomeIcon icon={["far", "comment"]} transform="rotate-270" />
-        <FontAwesomeIcon icon="external-link-alt" transform="rotate-310" />
-        </div>
-        <p>{post.likes} likes</p>
-        </div>
-        <div className='post-bookmark'>
-        <FontAwesomeIcon icon={["far", "bookmark"]} />
-        </div>
-      </div>
-      <Comments comments={post.comments} />
-      <div>
-      <form className='add-comment-form'  onSubmit={e => clickPost(e, id)}>
-      <input type='text' value={newComment} onChange={newInput} placeholder='Add Comment...'/>
-      <input type='submit' value='Post' />
-      </form>
-      </div>
+      <Comments comments={post.comments} id={post.id} updatecomments ={update} likes={post.likes}/>
     </div>
   );
 };
@@ -43,9 +23,6 @@ Post.propTypes = {
   post: PropTypes.shape({
     thumbnailUrl: PropTypes.string,
     imageUrl: PropTypes.string.isRequired,
-    faHeart: PropTypes.instanceOf(FontAwesomeIcon),
-    faComment: PropTypes.instanceOf(FontAwesomeIcon),
-    likes: PropTypes.number.isRequired,
     comments: PropTypes.array
   })
 };
