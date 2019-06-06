@@ -8,7 +8,8 @@ const Header = styled.header`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 3%;
+  padding: 3% 0%;
+  border-bottom:1px solid #999;
 
 `;
 const LogoHeader = styled.div`
@@ -56,7 +57,7 @@ const Form = styled.form`
     border:1px solid grey;
     width:40%;
     margin:0% 5%;
-    background-color: gainsboro;
+    background-color: #efefef;
     border-radius:5px;
     justify-content:space-between;
     align-items:center;
@@ -67,7 +68,7 @@ const Form = styled.form`
     outline:none;
     font-size:1em;
     height:5.5vh;
-    background-color: gainsboro;
+    background-color: #efefef;
     padding:0%;
     width:60%;
 }
