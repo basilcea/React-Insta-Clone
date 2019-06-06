@@ -69,7 +69,6 @@ render(){
     <div>
       <SearchBar searchHandler={this.filter} />
       <div className="App-section">
-        <div className="App-block"></div>
         <div style={style}><p>{this.state.length}</p></div>
         {this.state.posts.map(post => (
           <Post key={post.id}  post={post} update={this.updatePost} />
