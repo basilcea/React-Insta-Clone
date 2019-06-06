@@ -47,7 +47,7 @@
     width:100%;
     border-top:1px solid silver;
 }
-input[type='text']{
+.text{
     width:80%;
     margin:4% 3%;
     background-color: inherit;

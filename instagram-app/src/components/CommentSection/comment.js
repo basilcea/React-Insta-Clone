@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './commentSection.css';
 
-const Comment = ({comment})  => {
+const Comment = ({comment , deleteHandler})  => {
+    const style={
+        display:(comment.username===localStorage.getItem('username'))? 'block':'none'
+    }
     return (
     <div className='comment'> 
         <p><span className='comment-username'>{comment.username}</span> {comment.text}</p>
+        <button  className='comment-delete' style={style} onClick={()=> deleteHandler(comment.id)}>Delete</button>
     </div>
     )
 }

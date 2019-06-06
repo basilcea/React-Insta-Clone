@@ -2,6 +2,7 @@ import React ,{Component}from "react";
 import Comment from "./comment";
 import "./commentSection.css";
 import uuid from 'uuid';
+import moment from 'moment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -11,11 +12,12 @@ class CommentSection extends Component {
     this.state=({
       comments: this.props.comments,
       comment:'',
-      currentUser:'Basil',
+      currentUser:localStorage.getItem('username'),
       id:this.props.id,
       likes:this.props.likes,
       clicked:[],
     })
+
   }
   onLikeHandler = e => {
     e.preventDefault();
@@ -48,16 +50,27 @@ class CommentSection extends Component {
 addNewComment = (e) => {
   e.preventDefault();
   const newComments = Object.assign([], this.state.comments)
-  newComments.push({
+  if(this.state.comment!==''){
+    newComments.push({
     id:uuid(),
     text:this.state.comment,
-    username:'newUser'
+    username:this.state.currentUser,
   })
   this.setState({
     comments:newComments,
     comment:'',
   })
   this.props.updatecomments(this.state.id , newComments)
+}
+}
+deleteComment = e =>{
+  const newComments = Object.assign([], this.state.comments)
+  const deleted = newComments.find(comment => comment.id === e)
+  const index = newComments.indexOf(deleted)
+  newComments.pop(index)
+  this.setState({
+    comments:newComments,
+  })
 }
 render(){
   return(
@@ -76,11 +89,14 @@ render(){
         </div>
       </div>
     {this.state.comments.map(comment => 
-      <Comment key={comment.id} comment={comment} />
+      <Comment key={comment.id} comment={comment} deleteHandler ={this.deleteComment}/>
     )}
     <div>
+    {moment(this.props.time, 'MMMM Do YYYY, h:mm:ss a').fromNow()}
+    </div>
+    <div>
     <form className='add-comment-form'  onSubmit={e => this.addNewComment(e)}>
-    <input type='text' value={this.state.comment} onChange={this.onChangeHandler} placeholder='Add Comment...'/>
+    <input type='text' className='text' value={this.state.comment} onChange={this.onChangeHandler} placeholder='Add Comment...'/>
     <input type='submit' value='Post' />
     </form>
     </div>

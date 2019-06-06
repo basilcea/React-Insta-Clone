@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Comments from "../CommentSection/commentSection";
 
 
-const Post = ({ post, update }) => {
+const PostContainer= ({ post, update }) => {
   return (
     <div className='post-card'>
       <div className ='post-owner-info'>
@@ -15,11 +15,11 @@ const Post = ({ post, update }) => {
       <div className='post-image'>
         <img src={post.imageUrl} alt="" />
       </div>
-      <Comments comments={post.comments} id={post.id} updatecomments={update} likes={post.likes}/>
+      <Comments comments={post.comments} id={post.id} updatecomments={update} likes={post.likes} time={post.timestamp}/>
     </div>
   );
 };
-Post.propTypes = {
+PostContainer.propTypes = {
   post: PropTypes.shape({
     thumbnailUrl: PropTypes.string,
     imageUrl: PropTypes.string.isRequired,
@@ -27,9 +27,9 @@ Post.propTypes = {
   })
 };
 
-Post.defaultProps = {
+PostContainer.defaultProps = {
   likes: 0,
   comments: []
 };
 
-export default Post;
+export default PostContainer;

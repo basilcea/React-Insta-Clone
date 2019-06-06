@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-*{
+body{
   box-sizing: border-box;
 }
