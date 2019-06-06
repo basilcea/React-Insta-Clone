@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Post from './components/PostContainer/post';
-import SearchBar from './components/SearchBar/searchBar';
+import Postpage from './components/PostContainer/postPage';
+import Loginpage from './components/Login/login';
+import withAuthenticate  from './components/authentication/authenticate';
 import './App.css';
 import dummyData from './dummy-data' ;
 import {library} from '@fortawesome/fontawesome-svg-core'
@@ -11,47 +12,77 @@ import {faSearch,faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 library.add(
     faHeart,faComment,faCompass,faUser,faInstagram, faSearch, faBookmark ,faExternalLinkAlt
 ) 
-
+const ComponentFromWithAuthenticate = withAuthenticate(Postpage)(Loginpage);
 class App extends Component{
   constructor(props){
     super(props);
     this.state={
       posts:[],
+      filtered:false,
+      length:''
     }
   }
 
 componentDidMount(){
-  this.setState({
-    posts:dummyData
-  })
-}
-
-updatePost= id =>{
- //const newPostsArray = Object.assign([],this.state.posts)
- const newPostsArray = this.state.posts
-
+  const data = localStorage.getItem('posts');
+    const posts = JSON.parse(data);
+    this.setState({
+      posts: posts || dummyData
+    });
+  }
  
-
- const selectedPost = newPostsArray.filter(post => post.id === id)
- console.log(selectedPost , id, newPostsArray )
-
-
+updatePost= (id  , comments )=>{
+ const newPostsArray = Object.assign([],this.state.posts)
+ const updatedPosts= newPostsArray.map(post => {
+  if (post.id === id) {
+    post.comments = comments;
+    return post;
+  }
+  return post;
+ })
+ this.setState({
+  posts: updatedPosts
+ })
+ localStorage.clear();
+ localStorage.setItem('posts',JSON.stringify(updatedPosts))
+}
+filter =(e) => {
+  const data = localStorage.getItem('posts');
+  const posts = JSON.parse(data);
+  const results = posts.filter(
+    post =>  post.username.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+    if(e.target.value ===''){
+      this.setState({
+        posts:posts,
+        filtered:false
+      })
+    }
+    else if(results.length === 0){
+      this.setState({
+        posts:posts,
+        filtered:true,
+        length:'No Result Found'
+      })
+    }
+    else{
+      this.setState({
+        posts: results,
+        filtered:true,
+        length:`Result Found: ${results.length}`,
+      })
+    }
 }
   render(){
-    console.log(this.state.posts)
     return(
       <div className ='App-container'>
-        <SearchBar />
-        <div className='App-section'>
-        <div className='App-block'></div>
-        {
-          dummyData.map(data => <Post key={data.id} id={data.id}  post={data}  update={this.updatePost}/>)
-        }
-        </div>
+       {/* HOC */}
+      <ComponentFromWithAuthenticate  state={this.state} filter ={this.filter}  updating={this.updatedPosts}/>
       </div>
     )
   }
 
 }
+
 
 export default App;

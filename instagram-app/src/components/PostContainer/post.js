@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Comments from "../CommentSection/commentSection";
 
 
-const Post = ({ post, update}) => {
+const Post = ({ post, update }) => {
   return (
     <div className='post-card'>
       <div className ='post-owner-info'>
@@ -15,7 +15,7 @@ const Post = ({ post, update}) => {
       <div className='post-image'>
         <img src={post.imageUrl} alt="" />
       </div>
-      <Comments comments={post.comments} id={post.id} updatecomments ={update} likes={post.likes}/>
+      <Comments comments={post.comments} id={post.id} updatecomments={update} likes={post.likes}/>
     </div>
   );
 };
