@@ -1,5 +1,4 @@
 .App-container{
-  border:1px solid green;
   width: 100%; 
   background-color:#fafafa;
 }
@@ -9,12 +8,10 @@
 }
 @media(min-width:1000px){
   .App-section{
-    width:40%;
+    width:60%;
     margin:5% 20%;
   }
 }
-
-
 @media (max-width:500px){
     .App-section{
       width:100%;

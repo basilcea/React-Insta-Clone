@@ -1,0 +1,110 @@
+
+.login-card{
+width:80%;
+margin: 0% 10%;
+min-height:100vh;
+}
+.login-area{
+    margin: 0%;
+    min-height:40vh;
+    border-radius: 5px;
+
+}
+h1{
+    font-family: 'Rochester',cursive;
+    font-weight: bolder;
+    text-align:center;
+    padding-top:5%;
+    font-size:2em;
+    
+}
+form{
+    margin:10%;
+    width:80%;
+    outline:none;
+    display:flex;
+    flex-direction: column;
+    margin-bottom:0%;
+}
+input{
+    width: 99%;
+    background-color:#fafafa;
+    border-radius: 5px ;
+    height:6vh;
+    margin:3% 0%;
+    outline:0;
+    color:#999;
+    border:1px solid #efefef;
+    font-size:3.5vw;
+    padding-left:2%;
+}
+input[type='submit']{
+    width:102%;
+    background-color: lightskyblue;
+    border:none;
+    color:white;
+}
+.login-area-hr {
+    display:flex;
+    width:80%;
+    margin:0% 10%;
+    align-items:center;
+    justify-content: space-between;
+}
+.login-area-hr p {
+    color:#999;
+    font-weight: bold;
+}
+.login-area-line{
+    border:none;
+    border-top:1px solid #efefef;
+    width:40%;
+}
+.login-with-facebook{
+    color:#385185;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+  
+}
+.login-with-facebook p {
+    margin-bottom:1%;
+    padding:0;
+    width:90%;
+
+}
+#thick{
+    font-weight:bold;
+    font-size:4vw;
+}
+#facebook{
+    font-size:5vw;
+    margin-right:3%;
+}
+#styled{
+    text-align:center;
+    font-size:3.5vw;
+}
+.login-download-store {
+    display:flex;
+    justify-content:space-evenly;
+    width:80%;
+    margin:10%
+}
+.login-lower-section{
+    width:80%;
+    margin:10%;
+}
+.store {
+    width:45%;
+}
+.store img{
+    width:100%;
+}
+.footer{
+    width:80%;
+    margin: 5% 10%;
+    text-align: center;
+
+}

@@ -9,7 +9,7 @@ const  withAuthenticate = Postpage => Loginpage =>{
             })
         }
     componentDidMount(){
-        localStorage.getItem('username') && this.setState({
+        !!localStorage.getItem('username') && this.setState({
             loggedIn:true
         })
     }
